@@ -1,0 +1,219 @@
+# ===============================================================================
+# N8N ECS TERRAFORM MODULE - GIT IGNORE CONFIGURATION
+# ===============================================================================
+# Comprehensive ignore patterns for Terraform-based infrastructure project.
+# Prevents sensitive data and temporary files from being committed to version control.
+# ===============================================================================
+
+# ===============================================================================
+# TERRAFORM STATE AND CONFIGURATION
+# ===============================================================================
+# Local Terraform directories
+**/.terraform/*
+*/.terraform/*
+.terraform/
+
+# Terraform state files (contain sensitive infrastructure data)
+*.tfstate
+*.tfstate.*
+*.tfstate.backup
+
+# Terraform plan files (may contain sensitive data)
+*.tfplan
+*.tfplan.*
+*tfplan*
+
+# Terraform variable files (may contain sensitive configuration)
+terraform.tfvars
+terraform.tfvars.json
+*.auto.tfvars
+*.auto.tfvars.json
+
+# Terraform workspace files
+.terraform.tfstate.lock.info
+
+# Terraform lock files (comment out if you want to commit lock files)
+.terraform.lock.hcl
+
+# Terraform CLI configuration files
+.terraformrc
+terraform.rc
+
+# ===============================================================================
+# AWS AND CLOUD PROVIDER CREDENTIALS
+# ===============================================================================
+# AWS credentials and configuration
+.aws/
+*.pem
+*.key
+*.crt
+
+# Environment variable files
+.env
+.env.local
+.env.*.local
+
+# ===============================================================================
+# SECRETS AND SENSITIVE DATA
+# ===============================================================================
+# Custom secret files
+secrets.tf
+secrets.mk
+secrets.yml
+secrets.yaml
+secrets.json
+*secret*
+!modules/secrets
+*password*
+*credential*
+
+# SSH keys
+id_rsa
+id_rsa.pub
+*.ppk
+
+# ===============================================================================
+# TERRAFORM CRASH AND DEBUG FILES
+# ===============================================================================
+# Terraform crash logs
+crash.log
+crash.*.log
+
+# Terraform debug output
+terraform.log
+*.log
+
+# ===============================================================================
+# BACKUP AND TEMPORARY FILES
+# ===============================================================================
+# Backup files
+*.backup
+*.bak
+*.tmp
+*~
+
+# Editor swap files
+*.swp
+*.swo
+*~
+
+# ===============================================================================
+# OPERATING SYSTEM GENERATED FILES
+# ===============================================================================
+# macOS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+*.cab
+*.msi
+*.msm
+*.msp
+
+# Linux
+*~
+
+# ===============================================================================
+# IDE AND EDITOR CONFIGURATION
+# ===============================================================================
+# JetBrains IDEs
+.idea/
+*.iws
+*.iml
+*.ipr
+
+# Visual Studio Code
+.vscode/
+*.code-workspace
+
+# Sublime Text
+*.sublime-workspace
+*.sublime-project
+
+# Vim
+*.swp
+*.swo
+
+# Emacs
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+*.elc
+auto-save-list
+tramp
+.\#*
+
+# ===============================================================================
+# PROJECT SPECIFIC IGNORE PATTERNS
+# ===============================================================================
+# Local development configurations
+local/
+dev/
+test-configs/
+
+# Documentation builds
+docs/_build/
+site/
+
+# Package managers
+node_modules/
+*.lock
+
+# Compiled binaries
+*.exe
+*.dll
+*.so
+*.dylib
+
+# Archives
+*.zip
+*.tar
+*.tar.gz
+*.rar
+
+# ===============================================================================
+# OVERRIDE FILES FOR ENVIRONMENT-SPECIFIC CONFIGURATIONS
+# ===============================================================================
+# Override files should be ignored unless specifically needed
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# ===============================================================================
+# CUSTOM LOCAL CONFIGURATIONS
+# ===============================================================================
+# Local testing and development files
+local.tf
+local.tfvars
+dev.tfvars
+test.tfvars
+
+# Shell scripts with credentials
+deploy.sh
+destroy.sh
+*_deploy.sh
+*_destroy.sh
+
+# ===============================================================================
+# NEGATED PATTERNS (FILES TO INCLUDE)
+# ===============================================================================
+# Include specific files that might otherwise be ignored
+!terraform.tfvars.example
+!*.example
+!.gitkeep
+!README.md
+
+# Include Terraform configuration files
+!*.tf
+!*.tfvars.example
