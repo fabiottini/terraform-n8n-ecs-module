@@ -20,7 +20,25 @@ This module implements n8n's **queue mode** for distributed workflow execution, 
 
 ### Option 1: Self-Managed Redis on ECS
 
-Ideal for complete infrastructure control and cost optimization:
+Ideal for complete infrastructure control and cost optimization, particularly suitable for development, testing, or hobby environments where cost is a primary concern.
+
+**Configuration:**
+```hcl
+use_elasticache_saas = false
+redis_saas_node_type = ""
+```
+
+**Cost Benefits:**
+- No additional AWS service charges beyond ECS compute
+- Can scale down to single task instances for development
+- Perfect for low-traffic environments or personal projects
+- Minimal resource overhead when combined with reduced task counts
+
+**Use Cases:**
+- Development and testing environments
+- Personal or hobby projects
+- Budget-conscious deployments
+- Learning and experimentation
 
 ```
                              🌐 Internet
@@ -61,7 +79,26 @@ Ideal for complete infrastructure control and cost optimization:
 
 ### Option 2: Managed Redis with ElastiCache (SaaS)
 
-Recommended for production environments requiring managed services and high availability:
+Recommended for production environments requiring managed services, high availability, and enterprise-grade reliability.
+
+**Configuration:**
+```hcl
+use_elasticache_saas = true
+redis_saas_node_type = "cache.r5.large"
+```
+
+**Production Benefits:**
+- Fully managed Redis service with automatic backups
+- Multi-AZ deployment with automatic failover
+- Built-in monitoring and alerting
+- Automatic patch management and security updates
+- Enterprise-grade performance and reliability
+
+**Use Cases:**
+- Production environments
+- Mission-critical applications
+- High-traffic workflows
+- Enterprise deployments requiring SLA guarantees
 
 ```
                               🌐 Internet
@@ -109,27 +146,27 @@ Recommended for production environments requiring managed services and high avai
 
 ## Key Features
 
-### 🚀 Production-Ready Architecture
+### Production-Ready Architecture
 - **Queue Mode Implementation**: Distributed n8n architecture for horizontal scalability
 - **Multi-AZ Deployment**: Services deployed across 3 availability zones for maximum resilience
 - **Auto-Scaling**: Webhook and Worker services automatically scale based on demand (2-10 instances)
 - **High Availability Database**: RDS PostgreSQL with Multi-AZ deployment and automatic failover
 
-### 🔒 Enterprise Security
+### Enterprise Security
 - **Network Isolation**: All services deployed in private subnets with VPC isolation
 - **SSL/TLS Termination**: Automatic certificate management through AWS Certificate Manager
 - **Encryption**: Data encrypted in transit and at rest (RDS, ElastiCache)
 - **Secrets Management**: Secure credential storage using AWS Secrets Manager
 - **IAM Integration**: Least privilege access controls with dedicated service roles
 
-### 📊 Scalability & Performance
+### Scalability & Performance
 - **Master Service**: Single instance for UI/API coordination and workflow management
 - **Worker Services**: Auto-scaling from 2 to 10 instances based on CPU utilization
 - **Webhook Services**: Configurable scaling for external webhook processing
 - **Database**: RDS PostgreSQL optimized for workflow storage with configurable sizing
 - **Queue Management**: Redis-based task distribution (ECS or ElastiCache options)
 
-### 🔍 Monitoring & Observability
+### Monitoring & Observability
 - **CloudWatch Integration**: Comprehensive metrics for all services and infrastructure
 - **Automated Alerting**: Configurable SNS notifications for critical thresholds
 - **Centralized Logging**: Structured logs with configurable retention policies
