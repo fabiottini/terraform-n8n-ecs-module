@@ -398,11 +398,32 @@ After deployment completes:
 
 ### Database Architecture
 
-- **Engine**: PostgreSQL 13+ with Multi-AZ deployment
-- **Availability**: Primary instance in one AZ, standby in another
-- **Backup**: Automated daily backups with configurable retention
-- **Encryption**: Data encrypted at rest using AWS KMS
-- **Monitoring**: CloudWatch metrics for connections, CPU, storage
+This module uses **Amazon RDS PostgreSQL** as the primary database for n8n, providing enterprise-grade data persistence and reliability.
+
+#### RDS as n8n Database
+
+n8n requires a persistent database to store:
+- **Workflow Definitions**: All your automation workflows and their configurations
+- **Execution History**: Logs and results of workflow executions
+- **User Management**: User accounts, permissions, and authentication data
+- **Credentials**: Encrypted connection credentials for external services
+- **Settings**: Global n8n configuration and preferences
+
+#### RDS Configuration Features
+
+- **Engine**: PostgreSQL 13+ with Multi-AZ deployment for high availability
+- **Availability**: Primary instance in one AZ, standby replica in another AZ for automatic failover
+- **Backup**: Automated daily backups with configurable retention (7-35 days)
+- **Encryption**: Data encrypted at rest using AWS KMS and in transit via SSL/TLS
+- **Monitoring**: Comprehensive CloudWatch metrics for connections, CPU, storage, and performance
+- **Scaling**: Vertical scaling support for compute and storage as your n8n usage grows
+
+#### Database Compatibility
+
+- **Fully Compatible**: This module is specifically designed to work with RDS PostgreSQL
+- **Production Ready**: RDS provides the reliability and performance needed for production n8n deployments
+- **Managed Service**: No database administration overhead - AWS handles patches, backups, and maintenance
+- **Multi-AZ Support**: Automatic failover ensures your n8n workflows continue running even during database maintenance
 
 ### Security Model
 
