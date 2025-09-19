@@ -14,9 +14,12 @@ If you discover a security vulnerability in this Terraform module, please report
 
 ### Private Reporting
 
-Please do NOT open a public GitHub issue for security vulnerabilities.
+**Do NOT open a public GitHub issue for security vulnerabilities.**
 
-Instead, please send an email to: **[your-security-email@domain.com]**
+Instead, please report security issues privately using GitHub's Security Advisories feature:
+1. Go to the repository's Security tab
+2. Click "Report a vulnerability"
+3. Fill out the private vulnerability report
 
 Include the following information:
 - Description of the vulnerability
@@ -112,13 +115,6 @@ This module supports common compliance frameworks:
 - **PCI DSS**: Additional configuration required for payment data
 - **HIPAA**: Additional BAA and configuration required
 - **GDPR**: Data residency and encryption features available
-
-## Contact
-
-For security-related questions or concerns:
-
-**Email**: [your-security-email@domain.com]  
-**Response Time**: Within 48 hours for security issues
 
 For general questions, please use GitHub Issues or Discussions.
 
